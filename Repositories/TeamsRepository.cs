@@ -1,26 +1,42 @@
 using System;
+using System.Data;
 using CanadianSportsball.Models;
 
 namespace CanadianSportsball.Repositories
 {
     public class TeamsRepository
     {
-        internal object Get()
+        private readonly IDbConnection _db;
+        public TeamsRepository(IDbConnection db)
+        {
+            _db = db;
+        }
+        public object Get()
         {
             throw new NotImplementedException();
         }
 
-        internal Team Get(int id)
+        public Team Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        internal Team Get(string name)
+        public Team Get(string name)
         {
             throw new NotImplementedException();
         }
 
-        internal int Create(Team newTeam)
+        public int Create(Team newTeam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Edit(Team team)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
         {
             throw new NotImplementedException();
         }

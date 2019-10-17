@@ -40,11 +40,16 @@ namespace CanadianSportsball.Services
             if (team == null) { throw new Exception("Invalid Id"); }
             team.Name = editTeam.Name;
             team.Mascot = editTeam.Mascot;
+            _repo.Edit(team);
+            return team;
         }
 
-        public Team Delete(int id)
+        public string Delete(int id)
         {
-            throw new NotImplementedException();
+            Team exists = _repo.Get(id);
+            if (exists == null) { throw new Exception("Invalid Id"); }
+            _repo.Delete(id);
+            return " that teams been iced, eh";
         }
     }
 }
