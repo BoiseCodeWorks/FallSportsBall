@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using CanadianSportsball.Models;
 using CanadianSportsball.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CanadianSportsball.Controllers
@@ -32,14 +33,30 @@ namespace CanadianSportsball.Controllers
         {
             try
             {
-
+                return Ok(_ts.Get(id));
             }
-            catch (System.Exception)
+            catch (Exception e)
             {
-
-                throw;
+                return BadRequest(e.Message);
             }
         }
+        [Authorize]
+        [HttpPost]
+        public ActionResult<Team> Create([FromBody]Team newTeam)
+        {
+            try
+            {
+                return Ok(_ts.Create(newTeam));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        [Authorize]
+        [HttpPut("{id}")]
+
+        public ActionResult<Team> Edit
     }
 
 
