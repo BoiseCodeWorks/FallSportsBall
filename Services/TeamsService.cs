@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using CanadianSportsball.Models;
+using CanadianSportsball.Repositories;
 
 namespace CanadianSportsball.Services
 {
@@ -11,27 +13,31 @@ namespace CanadianSportsball.Services
         {
             _repo = repo;
         }
-        internal object Get()
+        public IEnumerable<Team> Get()
         {
-            throw new NotImplementedException();
+            return _repo.Get();
         }
 
-        internal object Get(int id)
+        public Team Get(int id)
         {
-            throw new NotImplementedException();
+            Team exists = _repo.Get(id);
+            if (exists == null) { throw new Exception("Invalid Id"); }
+            return exists;
         }
 
-        internal object Create(Team newTeam)
+        public Team Create(Team newTeam)
         {
-            throw new NotImplementedException();
+            Team team = _repo.Get(newTeam.Name);
+            if (team != null) { throw new Exception("Team already exists"); }
         }
 
-        internal object Edit(Team editTeam)
+        public Team Edit(Team editTeam)
         {
             throw new NotImplementedException();
+
         }
 
-        internal object Delete(int id)
+        public Team Delete(int id)
         {
             throw new NotImplementedException();
         }
