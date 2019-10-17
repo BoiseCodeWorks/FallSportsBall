@@ -19,5 +19,10 @@ namespace CanadianSportsball.Repositories
         {
             throw new NotImplementedException();
         }
+
+        internal int Create(Team newTeam)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

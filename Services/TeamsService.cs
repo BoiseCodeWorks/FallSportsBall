@@ -29,12 +29,17 @@ namespace CanadianSportsball.Services
         {
             Team team = _repo.Get(newTeam.Name);
             if (team != null) { throw new Exception("Team already exists"); }
+            int id = _repo.Create(newTeam);
+            newTeam.Id = id;
+            return newTeam;
         }
 
         public Team Edit(Team editTeam)
         {
-            throw new NotImplementedException();
-
+            Team team = _repo.Get(editTeam.Id);
+            if (team == null) { throw new Exception("Invalid Id"); }
+            team.Name = editTeam.Name;
+            team.Mascot = editTeam.Mascot;
         }
 
         public Team Delete(int id)
