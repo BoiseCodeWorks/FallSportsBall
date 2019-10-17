@@ -34,29 +34,28 @@ namespace CanadianSportsball.Repositories
         public int Create(Team newTeam)
         {
             string sql = @"
-            INSERT INTO teams
-            (name, mascot)
-            VALUES
-            (@Name,@Mascot);
-            SELECT LAST_INSERT_ID();";
+                INSERT INTO teams
+                (name, mascot)
+                VALUES
+                (@Name,@Mascot);
+                SELECT LAST_INSERT_ID();";
             return _db.ExecuteScalar<int>(sql, newTeam);
         }
 
         public void Edit(Team team)
         {
             string sql = @"
-           UPDATE teams
-           SET
-           name = @Name,
-           mascot = @Mascot
-           WHERE id = @Id";
+                UPDATE teams
+                SET
+                    name = @Name,
+                    mascot = @Mascot
+                WHERE id = @Id";
             _db.Execute(sql, team);
         }
 
         public void Delete(int id)
         {
-            string sql = @"
-            DELETE FROM teams WHERE id = @id";
+            string sql = "DELETE FROM teams WHERE id = @id";
             _db.Execute(sql, new { id });
         }
     }
