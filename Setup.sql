@@ -8,3 +8,15 @@ USE canadianball;
 --     hash VARCHAR(255) NOT NULL,
 --     PRIMARY KEY (id)
 -- );
+
+CREATE TABLE players
+(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    teamId INT,
+
+    FOREIGN KEY (teamId)
+        REFERENCES teams(id),
+        
+    PRIMARY KEY (id)
+);
