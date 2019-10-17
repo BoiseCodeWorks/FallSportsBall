@@ -8,10 +8,12 @@ namespace CanadianSportsball.Services
     public class TeamsService
     {
         private readonly TeamsRepository _repo;
+        private readonly PlayersRepository _pRepo;
 
-        public TeamsService(TeamsRepository repo)
+        public TeamsService(TeamsRepository repo, PlayersRepository pRepo)
         {
             _repo = repo;
+            _pRepo = pRepo;
         }
         public IEnumerable<Team> Get()
         {
@@ -50,6 +52,13 @@ namespace CanadianSportsball.Services
             if (exists == null) { throw new Exception("Invalid Id"); }
             _repo.Delete(id);
             return " that teams been iced, eh";
+        }
+
+        public IEnumerable<Player> GetPlayers(int id)
+        {
+            Team exists = _repo.Get(id);
+            if (exists == null) { throw new Exception("Invalid Id"); }
+            return _pRepo.GetPlayersByTeamId(id);
         }
     }
 }

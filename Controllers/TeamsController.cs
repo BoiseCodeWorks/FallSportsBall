@@ -40,7 +40,18 @@ namespace CanadianSportsball.Controllers
                 return BadRequest(e.Message);
             }
         }
-
+        [HttpGet("{id}/players")]
+        public ActionResult<IEnumerable<Player>> GetPlayers(int id)
+        {
+            try
+            {
+                return Ok(_ts.GetPlayers(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
         [Authorize]
         [HttpPost]
         public ActionResult<Team> Create([FromBody]Team newTeam)

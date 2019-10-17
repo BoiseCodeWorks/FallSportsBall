@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data;
 using CanadianSportsball.Models;
@@ -56,6 +57,12 @@ namespace CanadianSportsball.Repositories
         {
             string sql = "DELETE FROM players WHERE id = @id";
             _db.Execute(sql, new { id });
+        }
+
+        public IEnumerable<Player> GetPlayersByTeamId(int id)
+        {
+            string sql = "SELECT * FROM players WHERE teamId = @id";
+            return _db.Query<Player>(sql, new { id });
         }
     }
 }
