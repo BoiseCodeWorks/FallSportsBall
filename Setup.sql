@@ -1,48 +1,51 @@
-USE canadianball;
+-- USE canadianball;
 
--- CREATE TABLE users
+-- -- CREATE TABLE users
+-- -- (
+-- --     id VARCHAR(255) NOT NULL,
+-- --     username VARCHAR(255) NOT NULL,
+-- --     email VARCHAR(255) NOT NULL UNIQUE,
+-- --     hash VARCHAR(255) NOT NULL,
+-- --     PRIMARY KEY (id)
+-- -- );
+-- CREATE TABLE teams
 -- (
---     id VARCHAR(255) NOT NULL,
---     username VARCHAR(255) NOT NULL,
---     email VARCHAR(255) NOT NULL UNIQUE,
---     hash VARCHAR(255) NOT NULL,
+--     id INT NOT NULL AUTO_INCREMENT,
+--     name VARCHAR(255) NOT NULL,
+--     mascot VARCHAR(255) NOT NULL,
+
 --     PRIMARY KEY (id)
 -- );
-CREATE TABLE teams
-(
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    mascot VARCHAR(255) NOT NULL,
 
-    PRIMARY KEY (id)
-);
+-- CREATE TABLE players
+-- (
+--     id INT NOT NULL AUTO_INCREMENT,
+--     name VARCHAR(255) NOT NULL,
+--     teamId INT,
 
-CREATE TABLE players
-(
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    teamId INT,
-
-    FOREIGN KEY (teamId)
-        REFERENCES teams(id),
+--     FOREIGN KEY (teamId)
+--         REFERENCES teams(id),
         
-    PRIMARY KEY (id)
-);
+--     PRIMARY KEY (id)
+-- );
 
-CREATE TABLE games
-(
-    homeTeamId INT NOT NULL,
-    awayTeamId INT NOT NULL,
-    winnerId INT NOT NULL,
-    id INT NOT NULL AUTO_INCREMENT,
+-- CREATE TABLE games
+-- (
+--     homeTeamId INT NOT NULL,
+--     awayTeamId INT NOT NULL,
+--     winnerId INT,
+--     id INT NOT NULL AUTO_INCREMENT,
 
-    FOREIGN KEY (homeTeamId)
-        REFERENCES teams(id),
-    FOREIGN KEY (awayTeamId)
-        REFERENCES teams(id),
-    FOREIGN KEY (winnerId)
-        REFERENCES teams(id),
-        
-    PRIMARY KEY (id)
+--     FOREIGN KEY (homeTeamId)
+--         REFERENCES teams(id)
+--         ON DELETE CASCADE,
+--     FOREIGN KEY (awayTeamId)
+--         REFERENCES teams(id)
+--         ON DELETE CASCADE,
+--     FOREIGN KEY (winnerId)
+--         REFERENCES teams(id)
+--         ON DELETE CASCADE,
 
-)
+--     PRIMARY KEY (id)
+
+-- );

@@ -50,6 +50,12 @@ namespace CanadianSportsball
             //NOTE REGISTER SERVICES
             services.AddTransient<AccountsService>();
             services.AddTransient<AccountsRepository>();
+            services.AddTransient<PlayersService>();
+            services.AddTransient<PlayersRepository>();
+            services.AddTransient<TeamsService>();
+            services.AddTransient<TeamsRepository>();
+            // services.AddTransient<GamesService>();
+            // services.AddTransient<GamesRepository>();
         }
 
         private IDbConnection CreateDbConnection()
