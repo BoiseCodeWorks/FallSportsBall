@@ -40,6 +40,7 @@ namespace CanadianSportsball.Controllers
                 return BadRequest(e.Message);
             }
         }
+
         [Authorize]
         [HttpPost]
         public ActionResult<Team> Create([FromBody]Team newTeam)
