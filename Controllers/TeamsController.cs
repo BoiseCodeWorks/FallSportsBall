@@ -55,8 +55,31 @@ namespace CanadianSportsball.Controllers
         }
         [Authorize]
         [HttpPut("{id}")]
-
-        public ActionResult<Team> Edit
+        public ActionResult<Team> Edit([FromBody] Team editTeam, int id)
+        {
+            try
+            {
+                editTeam.Id = id;
+                return Ok(_ts.Edit(editTeam));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+        [Authorize]
+        [HttpDelete("{id}")]
+        public ActionResult<string> Delete(int id)
+        {
+            try
+            {
+                return Ok(_ts.Delete(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 
 
